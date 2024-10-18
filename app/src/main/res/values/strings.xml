@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Weather</string>
     <string name="no_internet">No internet connection!</string>
+    <string name="location_permission">Location permission required!></string>
     <string name="fahrenheit">\u2109</string>
     <string name="feels_like">Feels like %s</string>
     <string name="high_low_temp">H: %s\u2109 L: %s\u2109</string>

@@ -1,7 +1,7 @@
 package com.example.weather.ui.search
 
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.weather.base.BaseViewModel
 import com.example.weather.base.ClickAction
 import com.example.weather.base.PreferencesManager
 import com.example.weather.base.UIAction
@@ -16,7 +16,7 @@ import kotlinx.coroutines.launch
 class SearchViewModel(
     private val weatherRepository: WeatherRepository,
     private val preferencesManager: PreferencesManager
-) : BaseViewModel() {
+) : ViewModel() {
     private var _placesList = MutableStateFlow(emptyList<ReverseGeoCodeResponse>())
     val placesList: StateFlow<List<ReverseGeoCodeResponse>> get() = _placesList
 
@@ -36,13 +36,6 @@ class SearchViewModel(
             }
         }
 
-    override fun handleAction(uiAction: UIAction) {
-        when (uiAction) {
-            is SearchScreenActions.GoToLandingScreen -> {
-                performNavigationAction(NavigationAction.NavigateBack)
-            }
-        }
-    }
 
     private fun getPlacesList(cityName: String) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -72,8 +65,4 @@ class SearchViewModel(
     fun saveSelectedPlacesWeather(selectedPlace: ReverseGeoCodeResponse) {
         preferencesManager.savedLocation = selectedPlace
     }
-}
-
-sealed class SearchScreenActions : ClickAction() {
-    data object GoToLandingScreen : SearchScreenActions()
 }

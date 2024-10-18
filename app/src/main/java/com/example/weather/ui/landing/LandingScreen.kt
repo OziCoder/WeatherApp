@@ -38,7 +38,6 @@ import androidx.navigation.compose.composable
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.weather.R
-import com.example.weather.base.ComposeLayout
 import com.example.weather.base.PreferencesManager
 import com.example.weather.constants.ScreenConstants
 import com.example.weather.route.NavigationAction
@@ -80,10 +79,6 @@ fun CreateLandingScreen(
         }
     }
 
-    ComposeLayout(
-        viewModel = landingViewModel,
-        sendNavigationAction = sendNavigationAction
-    ) { actionEmitter ->
         Column(
             modifier = Modifier
                 .background(colorResource(id = R.color.land_bg))
@@ -173,4 +168,3 @@ fun CreateLandingScreen(
             }
         }
     }
-}

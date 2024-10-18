@@ -15,6 +15,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.res.stringResource
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
@@ -36,12 +37,12 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             landingViewModel = getViewModel<LandingViewModel>()
-            getPermission()
+            GetPermission()
         }
     }
 
     @Composable
-    fun getPermission() {
+    fun GetPermission() {
         var locationPermissionsGranted by remember {
             mutableStateOf(
                 areLocationPermissionsAlreadyGranted()
@@ -63,7 +64,7 @@ class MainActivity : ComponentActivity() {
                     acc && isPermissionGranted
                 }
                 if (!locationPermissionsGranted) {
-                    Toast.makeText(this, "Location permission required!",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, R.string.location_permission,Toast.LENGTH_SHORT).show()
                 } else {
                     fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
                     landingViewModel.gotoInitialScreen()

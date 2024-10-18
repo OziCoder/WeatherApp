@@ -7,7 +7,7 @@ import com.example.weather.route.NavigationAction
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
-@Composable
+/*@Composable
 fun ComposeLayout(
     viewModel: IViewModel,
     sendNavigationAction: (NavigationAction) -> Unit,
@@ -36,15 +36,12 @@ abstract class BaseViewModel() : ViewModel(), IViewModel {
     override val navigationFlow: SharedFlow<NavigationAction> = _navigationFlow.asSharedFlow()
 
     override val actionEmitter: UIActionEmitter = { uiAction ->
-        handleAction(uiAction)
+
     }
 
     protected fun performNavigationAction(action: NavigationAction) {
         viewModelScope.launch {
             _navigationFlow.emit(action)
         }
-    }
+    }*/
 
-    protected abstract fun handleAction(uiAction: UIAction)
-
-}
