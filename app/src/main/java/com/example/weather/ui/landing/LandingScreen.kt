@@ -72,92 +72,92 @@ fun CreateLandingScreen(
         }
     }
 
-        Column(
+    Column(
+        modifier = Modifier
+            .background(colorResource(id = R.color.land_bg))
+            .fillMaxSize()
+    ) {
+        /** View to show the searched location **/
+        Row(
             modifier = Modifier
-                .background(colorResource(id = R.color.land_bg))
-                .fillMaxSize()
+                .fillMaxWidth()
+                .padding(vertical = 12.dp)
+                .clickable {
+                    sendNavigationAction.invoke(NavigationAction.NavigateTo(ScreenConstants.SEARCH_SCREEN))
+                },
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically
         ) {
-            /** View to show the searched location **/
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 12.dp)
-                    .clickable {
-                        sendNavigationAction.invoke(NavigationAction.NavigateTo(ScreenConstants.SEARCH_SCREEN))
-                    },
-                horizontalArrangement = Arrangement.Center,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    text = city.value.name.toString(), fontSize = 30.sp,
-                    fontWeight = FontWeight(500),
-                    color = Color.White
-                )
-                Spacer(modifier = Modifier.width(4.dp))
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_arrow_down),
-                    contentDescription = "",
-                    tint = Color.White
-                )
-            }
-            /** View to show the weather details **/
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 12.dp),
-                horizontalArrangement = Arrangement.Center,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                AsyncImage(
-                    model = ImageRequest.Builder(LocalContext.current)
-                        .data(weather.value.logoUrl())
-                        .crossfade(true)
-                        .build(),
-                    placeholder = painterResource(R.drawable.ic_arrow_down),
-                    contentDescription = "",
-                    contentScale = ContentScale.Fit,
-                    modifier = Modifier.size(75.dp)
-                )
-                Spacer(modifier = Modifier.width(4.dp))
-                Text(
-                    text = weather.value.main?.temp.toString(), fontSize = 45.sp,
-                    fontWeight = FontWeight(500),
-                    color = Color.White
-                )
-                Spacer(modifier = Modifier.width(2.dp))
-                Text(
-                    modifier = Modifier.padding(bottom = 16.dp),
-                    text = stringResource(id = R.string.fahrenheit), fontSize = 25.sp,
-                    fontWeight = FontWeight(500),
-                    color = Color.White
-                )
-                Spacer(modifier = Modifier.width(20.dp))
-                Column() {
-                    if (weather.value.weather.size > 0) {
-                        Text(
-                            text = weather.value.weather[0].description.toString(),
-                            fontSize = 14.sp,
-                            fontWeight = FontWeight(500),
-                            color = Color.White
-                        )
-                    }
-                    Spacer(modifier = Modifier.width(20.dp))
+            Text(
+                text = city.value.name.toString(), fontSize = 30.sp,
+                fontWeight = FontWeight(500),
+                color = Color.White
+            )
+            Spacer(modifier = Modifier.width(4.dp))
+            Icon(
+                painter = painterResource(id = R.drawable.ic_arrow_down),
+                contentDescription = "",
+                tint = Color.White
+            )
+        }
+        /** View to show the weather details **/
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 12.dp),
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            AsyncImage(
+                model = ImageRequest.Builder(LocalContext.current)
+                    .data(weather.value.logoUrl())
+                    .crossfade(true)
+                    .build(),
+                placeholder = painterResource(R.drawable.ic_arrow_down),
+                contentDescription = "",
+                contentScale = ContentScale.Fit,
+                modifier = Modifier.size(75.dp)
+            )
+            Spacer(modifier = Modifier.width(4.dp))
+            Text(
+                text = weather.value.main?.temp.toString(), fontSize = 45.sp,
+                fontWeight = FontWeight(500),
+                color = Color.White
+            )
+            Spacer(modifier = Modifier.width(2.dp))
+            Text(
+                modifier = Modifier.padding(bottom = 16.dp),
+                text = stringResource(id = R.string.fahrenheit), fontSize = 25.sp,
+                fontWeight = FontWeight(500),
+                color = Color.White
+            )
+            Spacer(modifier = Modifier.width(20.dp))
+            Column() {
+                if (weather.value.weather.size > 0) {
                     Text(
-                        text = stringResource(id = R.string.feels_like).format(weather.value.main?.feelsLike.toString()),
-                        fontSize = 14.sp,
-                        fontWeight = FontWeight(500),
-                        color = Color.White
-                    )
-                    Text(
-                        text = stringResource(id = R.string.high_low_temp).format(
-                            weather.value.main?.tempMax.toString(),
-                            weather.value.main?.tempMin.toString()
-                        ),
+                        text = weather.value.weather[0].description.toString(),
                         fontSize = 14.sp,
                         fontWeight = FontWeight(500),
                         color = Color.White
                     )
                 }
+                Spacer(modifier = Modifier.width(20.dp))
+                Text(
+                    text = stringResource(id = R.string.feels_like).format(weather.value.main?.feelsLike.toString()),
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight(500),
+                    color = Color.White
+                )
+                Text(
+                    text = stringResource(id = R.string.high_low_temp).format(
+                        weather.value.main?.tempMax.toString(),
+                        weather.value.main?.tempMin.toString()
+                    ),
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight(500),
+                    color = Color.White
+                )
             }
         }
     }
+}

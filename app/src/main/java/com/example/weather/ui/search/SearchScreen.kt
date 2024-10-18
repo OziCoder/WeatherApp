@@ -47,6 +47,7 @@ fun NavGraphBuilder.searchScreenEntry(
         )
     }
 }
+
 @Composable
 fun CreateSearchScreen(
     searchViewModel: SearchViewModel = koinViewModel(),
