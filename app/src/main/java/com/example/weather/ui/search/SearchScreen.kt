@@ -89,11 +89,9 @@ fun CreateSearchScreen(
                 modifier = Modifier.weight(1f),
             ) {
                 itemsIndexed(items = placesList.value) { index, placeDetails ->
-                    searchPlacesListItem(
+                    SearchPlacesListItem(
                         DisplayAddress(
                             name = placeDetails.name.toString(),
-                            latitude = placeDetails.lat.toString(),
-                            longitude = placeDetails.lon.toString(),
                             state = placeDetails.state.toString(),
                             country = placeDetails.country.toString()
                         )
@@ -109,7 +107,7 @@ fun CreateSearchScreen(
 }
 
 @Composable
-fun searchPlacesListItem(
+fun SearchPlacesListItem(
     placeDetails: DisplayAddress,
     onClick: () -> Unit
 ) {

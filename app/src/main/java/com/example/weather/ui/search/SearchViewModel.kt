@@ -2,12 +2,9 @@ package com.example.weather.ui.search
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.weather.base.ClickAction
 import com.example.weather.base.PreferencesManager
-import com.example.weather.base.UIAction
 import com.example.weather.data.response.ReverseGeoCodeResponse
 import com.example.weather.data.repository.WeatherRepository
-import com.example.weather.route.NavigationAction
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

@@ -41,7 +41,7 @@ class WeatherRepository(private val service: APIService) : IWeatherRepository {
         onError: (ResponseError?) -> Unit
     ) {
         performNetworkApiCall(networkApiCall = {
-            service.getWeatherData(latitude.toString(), longitude.toString(), BuildConfig.API_KEY)
+            service.getWeatherData(latitude, longitude, BuildConfig.API_KEY)
         }).collect { result ->
             when (result) {
                 is APIState.Loading -> {
@@ -67,7 +67,7 @@ class WeatherRepository(private val service: APIService) : IWeatherRepository {
         onError: (ResponseError?) -> Unit
     ) {
         performNetworkApiCall(networkApiCall = {
-            service.getCityName(latitude.toString(), longitude.toString(), 2, BuildConfig.API_KEY)
+            service.getCityName(latitude, longitude, 2, BuildConfig.API_KEY)
         }).collect { result ->
             when (result) {
                 is APIState.Loading -> {

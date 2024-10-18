@@ -8,7 +8,6 @@ import java.io.IOException
 import java.util.*
 
 const val NO_NETWORK_ERROR = "Please check your network connection and retry"
-const val RETRY_COUNT = 2
 /**
   Readable naming convention for Network call lambda
  **/
@@ -19,8 +18,6 @@ typealias NetworkAPIInvoke<T> = suspend () -> Response<T>
  success model
  @param networkApiCall lambda representing a suspend function for the retrofit API call
  @return [T] is the success object
- [IOTaskResult.OnSuccess] if network call is executed successfully, or
- [IOTaskResult.OnFailed] if network call is failed or on error
  **/
 suspend fun <T : Any> performNetworkApiCall(
     networkApiCall: NetworkAPIInvoke<T>

@@ -6,18 +6,12 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.CircularProgressIndicator
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -42,7 +36,6 @@ import com.example.weather.base.PreferencesManager
 import com.example.weather.constants.ScreenConstants
 import com.example.weather.route.NavigationAction
 import com.example.weather.route.executeNavigationAction
-import com.example.weather.ui.search.SearchScreenRoute
 import com.google.android.gms.location.FusedLocationProviderClient
 import org.koin.androidx.compose.koinViewModel
 
@@ -90,7 +83,7 @@ fun CreateLandingScreen(
                     .fillMaxWidth()
                     .padding(vertical = 12.dp)
                     .clickable {
-                        sendNavigationAction.invoke(NavigationAction.NavigateTo(SearchScreenRoute().path))
+                        sendNavigationAction.invoke(NavigationAction.NavigateTo(ScreenConstants.SEARCH_SCREEN))
                     },
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically

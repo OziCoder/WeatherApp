@@ -5,7 +5,7 @@ import android.content.SharedPreferences
 import com.example.weather.data.response.ReverseGeoCodeResponse
 import com.google.gson.Gson
 
-class PreferencesManager(private val context: Context) {
+class PreferencesManager(context: Context) {
 
     companion object{
         const val SAVED_LOCATION = "saved_location"
